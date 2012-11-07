@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["brendan@unknowncollective.com"]
   gem.description   = %q{Gives a resouce the ability to be published against a certain date}
   gem.summary       = %q{Created published and published_at attrbutes for a model and allows them to be queried against.}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/HuffMoody/is_publishable"
 
   gem.files         = Dir.glob("{bin,lib}/**/*") + %w(README.md)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
