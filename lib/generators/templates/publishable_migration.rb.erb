@@ -1,0 +1,11 @@
+class <%= migration_class_name %> < ActiveRecord::Migration
+  def up
+    add_column :<%= table_name %>, :published, :boolean, default: false
+    add_column :<%= table_name %>, :published_at, :datetime
+  end
+
+  def down
+    remove_column :<%= table_name %>, :published
+    remove_column :<%= table_name %>, :published_at
+  end
+end
