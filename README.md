@@ -42,13 +42,16 @@ After this, simply add `publishable` to your model (be sure to add published and
       publishable
     end
 
-The following scopes are now available:
+After this, when you first mark an Article as published and published_at is not set, published_at will automatically be set to now.  If published_at is already set, it will not be changed.
+
+### Scopes
 
 * published -- returns all Article that published=true and published_at is a date in the past
 * unpublished -- returns all Articles that are published=false or published=true and published_at is a date in the future
 
 
-The follow instance methods are now available:
+### Instance Methods
+
 * published? -- returns true if published=true and published_at is a date in the past
 * unpublished? -- returns true if published=false or published=true and published_at is a date in the future
 
