@@ -29,7 +29,7 @@ describe IsPublishable do
 
   it 'will update published_at to now automatically' do
     sample = Sample.create :published => true
-    sample.published_at.should be_within(1.second).of(Time.zone.now)
+    sample.published_at.should be_within(2.second).of(Time.zone.now)
   end
 
   it 'will not update published_at if already set' do
@@ -67,6 +67,22 @@ describe IsPublishable do
 
     Sample.published.should_not include sample
     Sample.unpublished.should include sample
+  end
+
+  it 'has a publish! method' do
+    sample = Sample.create
+    sample.published?.should be_false
+    sample.publish!
+    sample.published?.should be_true
+  end
+
+  it 'has a unpublish! method' do
+    sample = Sample.create published: true
+    sample.published?.should be_true
+    sample.unpublish!
+    sample.published?.should be_false
+    sample.publish!
+    sample.published?.should be_true
   end
 
 end

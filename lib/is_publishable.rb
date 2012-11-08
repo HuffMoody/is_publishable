@@ -18,7 +18,8 @@ module IsPublishable
         # create before_save hook
         before_save do
           if published and published_at.nil?
-            self.published_at = Time.zone.now
+            # when not set, set time to now (minus 1 second for easy test integration)
+            self.published_at = Time.zone.now - 1.second
           elsif published.nil?
             self.published = false
           end
@@ -34,6 +35,16 @@ module IsPublishable
   end
 
   module InstanceMethods
+
+    def publish!
+      self.published = true
+      save
+    end
+
+    def unpublish!
+      self.published = false
+      save
+    end
 
     def published?(time = Time.zone.now)
       published and published_at.present? and published_at < time
