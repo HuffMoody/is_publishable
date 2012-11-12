@@ -18,8 +18,8 @@ module IsPublishable
         # create before_save hook
         before_save do
           if published and published_at.nil?
-            # when not set, set time to now (minus 1 second for easy test integration)
-            self.published_at = Time.zone.now - 1.second
+            # when not set, set time to now
+            self.published_at = Time.zone.now
           elsif published.nil?
             self.published = false
           end
