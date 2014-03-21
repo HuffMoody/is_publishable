@@ -26,8 +26,8 @@ module IsPublishable
         end
 
         # create scopes
-        scope :published, lambda { where(:published => true).where("published_at < ?", Time.zone.now) }
-        scope :unpublished, lambda { where("published = ? OR published_at > ?", false, Time.zone.now) }
+        scope :published, lambda { where(:published => true).where("#{table_name}.published_at < ?", Time.zone.now) }
+        scope :unpublished, lambda { where("#{table_name}.published = ? OR #{table_name}.published_at > ?", false, Time.zone.now) }
 
       end
     end
